@@ -1,7 +1,10 @@
 const express = require('express');
 const { createPage } = require('./render/render');
 const app = express();
-const loginpage = createPage("login/login.html")
+const loginpage = createPage("login/login.html");
+
+
+
 
 app.use(express.static("public"));
 
@@ -13,7 +16,14 @@ app.get("/login", (req, res) => {
     res.send(loginpage);
 });
 
-app.get("/", (req, res) => {
+/* Import and use routes */
+const loginRouter = require("./routers/login.js");
+
+
+app.use(loginRouter.router);
+
+
+/* app.get("/", (req, res) => {
     res.send(frontpagePage);
 });
 
@@ -27,7 +37,7 @@ app.get("/projects", (req, res) => {
 
 app.get("/contact", (req, res) => {
     res.send(contactPage);
-});
+}); */
 
 const PORT = process.env.PORT || 8080;
 
