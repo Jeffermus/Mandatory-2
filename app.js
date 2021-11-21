@@ -2,6 +2,7 @@ const express = require('express');
 const { createPage } = require('./render/render');
 const app = express();
 const loginpage = createPage("login/login.html");
+const createuser = createPage("createUser/createUser.html");
 
 
 
@@ -14,6 +15,10 @@ app.use(express.urlencoded({extended: true}));
 
 app.get("/login", (req, res) => {
     res.send(loginpage);
+});
+
+app.get("/createuser", (req, res) => {
+    res.send(createuser);
 });
 
 /* Import and use routes */
