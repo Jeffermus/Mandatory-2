@@ -18,6 +18,5 @@ connection.query(sqlquery, (error, result) => {
 
   console.log("tablecreated");
 }); */
-module.exports = {
-  connection,
-};
+module.exports = connection;
+
