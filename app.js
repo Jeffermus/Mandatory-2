@@ -34,7 +34,6 @@ const frontpagePage = createPage("frontpage/frontpage.html", {
 });
 const CVPage = createPage("CVPage/CVPage.html");
 const projectsPage = createPage("projects/projects.html");
-const contactPage = createPage("contact/contact.html");
 const adminuser = createPage("admin/admin.html");
 
 
@@ -52,6 +51,12 @@ app.get("/projects", (req, res) => {
 });
 
 app.get("/contact", (req, res) => {
+  const optionsObj = {
+    title:"contact",
+    scriptTag:"contact.js"
+  }
+  const contactPage = createPage("contact/contact.html", optionsObj);
+
   res.send(contactPage);
 });
 
@@ -79,20 +84,21 @@ app.get("/admin", (req, res) => {
 
 
  app.post('/send-email', function (req, res) {
+   console.log("test")
               let transporter = nodeMailer.createTransport({
                   host: 'smtp.office365.com', // Office 365 server
                   port: 587,     // secure SMTP
                   secure: false,
                   auth: {
-                      user: "jeffoech1995@outlook.dk", // Insert mail user into a config file using module.exports
-                      pass: "dra9923hejd99" // Insert mail password into a config file using module.exports
+                      user: "jeff0866@stud.kea.dk", // Insert mail user into a config file using module.exports
+                      pass: "Mj8d4la#" // Insert mail password into a config file using module.exports
                   },
                   tls: {
                       rejectUnauthorized: false
                   }
               });
               let mailOptions = {
-                  from: "jeffoech1995@outlook.dk", // sender address
+                  from: "jeff0866@stud.kea.dk", // sender address
                   to: "jeffoech@gmail.com", // reciver
                   subject: "<h3>Fra</h3>  Jeffrey", // Subject line
                   html: "<h3>Hello You!</h3>" // plain text bodyy
@@ -100,10 +106,17 @@ app.get("/admin", (req, res) => {
               let dato = new Date()
               transporter.sendMail(mailOptions, (error, info) => {
                   if (error) {
+                    res.json({
+                      status: 400,
+                      msg: "ERROR!"
+                    })
                       return console.log(dato + error);
                   }
                   console.log(dato + 'Message %s sent: %s');
-                      res.redirect("/");
+                      res.json({
+                        status: 200,
+                        msg: "Thank you for the message!"
+                      });
                     });
                   });
   
