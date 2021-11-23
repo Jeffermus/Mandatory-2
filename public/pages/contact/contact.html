@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/assets/css/contact.css">
     <link rel="stylesheet" href="/assets/css/global.css">
     <link rel="stylesheet" href="/assets/css/nav.css">
+    <link rel="stylesheet" href="/assets/css/toastr.css">
     <title>Contact</title>
 </head>
 <body>
@@ -22,10 +23,12 @@
             <input id="phone" name="phone" placeholder="Phone"><br><br>
             <label>Message</label>
             <textarea id="message" name="message" rows="15" cols="35"></textarea>
-            <button type="submit" id="contact-button">Contact Me!</button>
+            <button class="toastr toastr--visible toastr--success toastr--error" type="submit" id="contact-button">Contact Me!</button>
         </div>
+        <!-- <div class="toastr toastr--visible toastr--success toastr--error">Sample toastr message</div> -->
     </form>
 </body>
 </html>
 
 <script src="./pages/contact/contact.js"></script>
+<script src="../pages/toastr.js"></script>

@@ -18,4 +18,12 @@ function sendContactMessage() {
     });
 }
 
+
+  
+  $(document).ready(function onDocumentReady() {  
+    setInterval(function doThisEveryTwoSeconds() {
+      toastr.success("Hello World!");
+    }, 10);   // 2000 is 2 seconds  
+  });
+
 document.getElementById("contact-button").addEventListener("click", sendContactMessage);
