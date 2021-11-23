@@ -1,4 +1,4 @@
-.toast {
+.toastr {
     position: fixed;
     top: 0;
     left: 0;
@@ -20,19 +20,19 @@
     transition: opacity 0.2s, top 0.2s, visibility 0.2s;
   }
   
-  .toast--visible {
+  .toastr--visible {
     top: 20px;
     opacity: 1;
     visibility: visible;
   }
   
-  .toast--success {
+  .toastr--success {
     background: #00c02b;
     border-color: #009d23;
     color: #ffffff;
   }
   
-  .toast--error {
+  .toastr--error {
     background: #d50000;
     border-color: #ba0000;
     color: #ffffff;

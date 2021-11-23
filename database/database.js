@@ -8,7 +8,7 @@ const connection = mysql2.createConnection({
 });
 
 connection.connect();
-/* const sqlquery =
+const sqlquery =
   "create table users (username varchar(255), password varchar(255))";
 connection.query(sqlquery, (error, result) => {
   if (error) {
@@ -17,6 +17,6 @@ connection.query(sqlquery, (error, result) => {
   }
 
   console.log("tablecreated");
-}); */
+});
 module.exports = connection;
 
