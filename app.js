@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const nodemailer = require("nodemailer");
+const nodeMailer = require("nodemailer");
 const { createPage} = require("./render/render.js");
 const createuser = createPage("createUser/createUser.js");
 // const adminuser = createPage("admin/admin.js");
@@ -39,7 +39,6 @@ const adminuser = createPage("admin/admin.html");
 
 
 
-
 app.get("/", (req, res) => {
   res.send(frontpagePage);
 });
@@ -73,6 +72,11 @@ app.get("/admin", (req, res) => {
     res.send(adminuser);
   });
 
+  app.get("/send", (req, res) => {
+    res.send(frontpagePage);
+  
+  });
+
 
  app.post('/send-email', function (req, res) {
               let transporter = nodeMailer.createTransport({
@@ -80,15 +84,15 @@ app.get("/admin", (req, res) => {
                   port: 587,     // secure SMTP
                   secure: false,
                   auth: {
-                      user: "jeff0866@stud.kea.dk", // Insert mail user into a config file using module.exports
-                      pass: "Mj8d4la#" // Insert mail password into a config file using module.exports
+                      user: "jeffoech1995@outlook.dk", // Insert mail user into a config file using module.exports
+                      pass: "dra9923hejd99" // Insert mail password into a config file using module.exports
                   },
                   tls: {
                       rejectUnauthorized: false
                   }
               });
               let mailOptions = {
-                  from: "jeff0866@stud.kea.dk", // sender address
+                  from: "jeffoech1995@outlook.dk", // sender address
                   to: "jeffoech@gmail.com", // reciver
                   subject: "<h3>Fra</h3>  Jeffrey", // Subject line
                   html: "<h3>Hello You!</h3>" // plain text bodyy
@@ -99,7 +103,7 @@ app.get("/admin", (req, res) => {
                       return console.log(dato + error);
                   }
                   console.log(dato + 'Message %s sent: %s');
-                      res.render('render');
+                      res.redirect("/");
                     });
                   });
   
