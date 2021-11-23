@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const nodemailer = require("nodemailer");
 const { createPage } = require("./render/render.js");
 const createuser = createPage("createUser/createUser.js");
 const adminuser = createPage("admin/admin.js");
@@ -71,6 +72,10 @@ app.get("/admin", (req, res) => {
   });
 
 
+app.post("/send-email", (res,req) => {
+
+})
+  
 const PORT = process.env.PORT || 8080;
 
 app.listen(PORT, (error) => {
