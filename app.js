@@ -1,9 +1,8 @@
 const express = require("express");
 const app = express();
 const { createPage } = require("./render/render.js");
-const loginpage = createPage("./public/pages/login/login.js");
-const createuser = createPage("./public/pages/createUser/createUser.js");
-const adminuser = createPage("./public/pages/admin/admin.js");
+const createuser = createPage("createUser/createUser.js");
+const adminuser = createPage("admin/admin.js");
 
 app.use(express.static("public"));
 
@@ -36,6 +35,8 @@ const CVPage = createPage("CVPage/CVPage.html");
 const projectsPage = createPage("projects/projects.html");
 const contactPage = createPage("contact/contact.html");
 
+
+
 app.get("/", (req, res) => {
   res.send(frontpagePage);
 });
@@ -51,8 +52,14 @@ app.get("/projects", (req, res) => {
 app.get("/contact", (req, res) => {
   res.send(contactPage);
 });
+
 app.get("/login", (req, res) => {
-  res.send(loginpage);
+  const optionsObj = {
+    title:"login", 
+    scriptTag:"login.js"
+  }
+  const loginPage = createPage("login/login.html", optionsObj);
+  res.send(loginPage);
 });
 
 app.get("/createuser", (req, res) => {
